@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+
+from d3s.nagios import NagiosPluginBase
+
+class NagiosCheckHealth(NagiosPluginBase):
+	def __init__(self):
+		NagiosPluginBase.__init__(self, 'HEALTH')
+	
+	def collect(self):
+		self.set_message("up X hours")
+		pass
+
+plugin = NagiosCheckHealth()
+plugin.add_perf_data("uptime", "X")
+plugin.add_perf_data("y", "y")
+plugin.run()
+
