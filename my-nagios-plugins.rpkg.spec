@@ -1,6 +1,5 @@
 Name: my-nagios-plugins
 Version: {{{ git_version }}}
-Version: 0.1
 Release: 1%{?dist}
 Summary: Custom Nagios plugins
 
