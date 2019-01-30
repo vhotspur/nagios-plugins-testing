@@ -55,5 +55,4 @@ class CheckHealth(NagiosPluginBase):
 
 if __name__ == '__main__':
     import sys
-    print(sys.argv)
     CheckHealth().run()
