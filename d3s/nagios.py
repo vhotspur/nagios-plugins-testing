@@ -76,6 +76,12 @@ class NagiosPluginBase:
             if res is not None:
                 yield res
 
+    def contains_line(self, regexp, lines):
+        """ Returns whether some line matches regular expression. """
+        for x in self.grep_lines(regexp, lines):
+            return True
+        return False
+
     def run(self):
         """ Main of the plugin that does the work. """
         self.collect()
