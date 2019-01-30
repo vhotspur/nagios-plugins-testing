@@ -43,6 +43,16 @@ class NagiosPluginBase:
         """ Set the main plugin message with {placeholders} from perf data. """
         self.set_message(msg.format(**self.perf_data_))
 
+    def worsen_to_warning(self):
+        """ Final plugin status would be warning or worse. """
+        if self.status_ == 0:
+            self.status_ = 1
+
+    def worsen_to_critical(self):
+        """ Final plugin status would be critical. """
+        if (self.status_ == 0) or (self.status_ == 1):
+            self.status_ = 2
+
     # pylint: disable=no-self-use
     def read_file(self, filename):
         """ Read given file and return list of its lines (rstripped). """
