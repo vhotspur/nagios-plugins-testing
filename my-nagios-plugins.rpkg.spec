@@ -22,11 +22,11 @@ Blab blah
 {{{ git_setup_macro }}}
 
 %build
-%py3_build
+python3 setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%py3_install --record=INSTALLED_FILES
+python3 setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
