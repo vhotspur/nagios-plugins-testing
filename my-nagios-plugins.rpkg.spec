@@ -8,8 +8,9 @@ URL: https://lab.d3s.mff.cuni.cz/nagios-plugins/
 VCS: {{{ git_vcs }}}
 Source: {{{ git_pack }}}
 
+BuildRequires: python3
+BuildRequires: python3-setuptools
 Requires: python3
-Requires: python3-setuptools
 
 %description
 Blab blah
