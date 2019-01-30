@@ -22,6 +22,8 @@ Blab blah
 {{{ git_setup_macro }}}
 
 %build
+ls
+pwd
 python3 setup.py build
 
 %install
