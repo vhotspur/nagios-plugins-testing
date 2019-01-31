@@ -1,5 +1,5 @@
 Name: Name: {{{ git_name name="my-nagios-plugins" }}}
-Version: 0.1
+Version: 0.1-{{{ git_version }}}
 Release: 1%{?dist}
 Summary: Custom Nagios plugins
 
