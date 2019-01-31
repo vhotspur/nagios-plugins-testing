@@ -9,6 +9,7 @@ VCS: {{{ git_vcs }}}
 Source: {{{ git_pack }}}
 
 BuildRequires: python3
+BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 Requires: python3
 
@@ -19,16 +20,14 @@ Blab blah
 %global debug_package %{nil}
 
 %prep
-{{{ git_setup_macro }}}
+{{{ git_dir_setup_macro }}}
 
 %build
-ls
-pwd
-python3 setup.py build
+%{__python3} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python3 setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+%{__python3} setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
