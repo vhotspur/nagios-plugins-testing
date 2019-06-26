@@ -25,8 +25,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'nagios_d3s_check_health=d3s.nagios_plugins.check_health',
-            'nagios_d3s_check_systemd_service=d3s.nagios_plugins.check_systemd_service',
+            'nagios_d3s_check_health=d3s.nagios_plugins.check_health:main',
+            'nagios_d3s_check_systemd_service=d3s.nagios_plugins.check_systemd_service:main',
         ],
     },
 )

@@ -53,6 +53,8 @@ class CheckHealth(NagiosPluginBase):
         # Format final message
         self.set_message_from_perf("up {uptime}, {load_5min} load, {tasks_runnable} ready tasks")
 
-if __name__ == '__main__':
-    import sys
+def main():
     CheckHealth().run()
+
+if __name__ == '__main__':
+    main()

@@ -53,6 +53,8 @@ class CheckSystemdService(NagiosPluginBase):
             self.set_message_from_perf('{service_name} running' + details)
 
 
-if __name__ == '__main__':
-    import sys
+def main():
     CheckSystemdService().run()
+
+if __name__ == '__main__':
+    main()
