@@ -1,5 +1,21 @@
 #!/usr/bin/env python3
 
+"""
+Checks basic system health, useful for collecting basic stats.
+
+Usage:
+  <no parameters needed>
+
+Example output:
+
+    HEALTH OK - up 1 day, 0.79 load, 1 ready tasks|\
+        mem_total_kb=16300840,mem_avail_kb=9947436,\
+        load_1min=0.39,load_5min=0.79,load_15min=0.86,\
+        tasks_runnable=1,tasks_total=952,\
+        uptime=1 day
+
+"""
+
 import re
 from d3s.nagios import NagiosPluginBase
 
@@ -54,6 +70,9 @@ class CheckHealth(NagiosPluginBase):
         self.set_message_from_perf("up {uptime}, {load_5min} load, {tasks_runnable} ready tasks")
 
 def main():
+    """
+    Module main for execution from shell script.
+    """
     CheckHealth().run()
 
 if __name__ == '__main__':

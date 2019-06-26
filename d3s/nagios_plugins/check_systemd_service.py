@@ -1,5 +1,18 @@
 #!/usr/bin/env python3
 
+"""
+Checks that systemd unit is enabled and running.
+
+Usage:
+  --service UNIT
+
+Example output:
+
+    SRV OK - httpd running, 12.6M, 6 tasks|\
+        service_name=httpd,service_tasks=6,service_memory=12.6M
+
+"""
+
 import re
 import argparse
 from d3s.nagios import NagiosPluginBase
@@ -37,7 +50,8 @@ class CheckSystemdService(NagiosPluginBase):
         if not is_active:
             self.worsen_to_critical()
 
-        for line in self.grep_lines(CheckSystemdService.DETAILS_BASE_RE, self.read_command_output(['systemctl', 'status', self.service])):
+        status_output = self.read_command_output(['systemctl', 'status', self.service])
+        for line in self.grep_lines(CheckSystemdService.DETAILS_BASE_RE, status_output):
             key = line.group(1)
             if key == 'Tasks':
                 self.add_perf_data('service_tasks', line.group(2))
@@ -54,6 +68,9 @@ class CheckSystemdService(NagiosPluginBase):
 
 
 def main():
+    """
+    Module main for execution from shell script.
+    """
     CheckSystemdService().run()
 
 if __name__ == '__main__':
