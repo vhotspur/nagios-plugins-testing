@@ -78,9 +78,11 @@ class NagiosPluginBase:
 
     def contains_line(self, regexp, lines):
         """ Returns whether some line matches regular expression. """
-        for x in self.grep_lines(regexp, lines):
+        try:
+            next(self.grep_lines(regexp, lines))
             return True
-        return False
+        except StopIteration:
+            return False
 
     def run(self):
         """ Main of the plugin that does the work. """
